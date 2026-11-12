@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Portfolio | DIT Student</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050914;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* CINEMATIC BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at 15% 20%, #07598555, transparent 45%),
+        radial-gradient(ellipse at 85% 75%, #312e8155, transparent 45%),
+        linear-gradient(135deg,#030712,#07182e,#080d20);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#38bdf80b 1px, transparent 1px),
+        linear-gradient(90deg,#38bdf80b 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom,black,transparent);
+}
+
+/* NAVBAR */
+
+header {
+    padding: 22px 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #07111f99;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #38bdf822;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #38bdf8;
+}
+
+nav a {
+    color: #dbeafe;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 88vh;
+    padding: 80px 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tag {
+    display: inline-block;
+    color: #38bdf8;
+    border: 1px solid #38bdf866;
+    background: #0c4a6e33;
+    padding: 10px 18px;
+    border-radius: 30px;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(40px,6vw,68px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg,#38bdf8,#818cf8);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h2 {
+    font-size: 22px;
+    color: #bfdbfe;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    color: #a5b4c9;
+    line-height: 1.9;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 8px;
+    background: linear-gradient(90deg,#0284c7,#38bdf8);
+    color: #03111f;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 25px #38bdf844;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px #38bdf888;
+}
+
+/* PROFILE IMAGE */
+
+.profile-frame {
+    width: 310px;
+    height: 390px;
+    padding: 5px;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#38bdf8,#6366f1,#38bdf8);
+    box-shadow: 0 0 50px #0284c755;
+    flex-shrink: 0;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 21px;
+    background: #10243a;
+}
+
+@keyframes floating {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* SECTIONS */
+
+section {
+    padding: 85px 9%;
+}
+
+.heading {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.heading span {
+    color: #38bdf8;
+}
+
+/* ABOUT */
+
+.about-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    background: #10243a88;
+    backdrop-filter: blur(15px);
+    border: 1px solid #38bdf833;
+    border-radius: 18px;
+    line-height: 2;
+    color: #cbd5e1;
+    box-shadow: 0 15px 50px #00000044;
+    transition: .3s;
+}
+
+.about-box:hover {
+    border-color: #38bdf8;
+}
+
+/* EDUCATION */
+
+.education {
+    background: #08172a77;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 25px;
+}
+
+.card {
+    padding: 32px;
+    background: #10243a99;
+    backdrop-filter: blur(15px);
+    border: 1px solid #38bdf833;
+    border-radius: 16px;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    box-shadow: 0 10px 35px #0284c733;
+}
+
+.card .icon {
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: #38bdf8;
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #a5b4c9;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px;
+    text-align: center;
+    background: #030712;
+    border-top: 1px solid #38bdf822;
+    color: #94a3b8;
+    line-height: 1.9;
+}
+
+footer span {
+    color: #38bdf8;
+}
+
+/* MOBILE */
+
+@media(max-width:750px) {
+
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 65px 6%;
+    }
+
+    .profile-frame {
+        width: 245px;
+        height: 290px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+
+    section {
+        padding: 60px 6%;
+    }
+
+    .about-box {
+        padding: 25px;
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+    <div class="logo">Mahboob Zafar</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+    </nav>
+
+</header>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            DIPLOMA IN INFORMATION TECHNOLOGY
+        </div>
+
+        <h1>Hello, I'm <span>Mahboob Zafar</span></h1>
+
+        <h2>DIT Student | Aspire College Mailsi</h2>
+
+        <p>
+            Welcome to my personal website.
+
+        I am currently studying DIT (Diploma in
+        Information Technology) at Aspire College
+        Mailsi.
+
+
+            
+        </p>
+
+        <a href="#about" class="btn">Explore About Me</a>
+
+    </div>
+
+    <!-- PROFILE PHOTO -->
+
+    <div class="profile-frame">
+
+        <img src="Screenshot_20261013-185136.jpg"
+             alt="My Personal Profile Photo">
+
+    </div>
+
+</div>
+
+<!-- ABOUT ME -->
+
+<section id="about">
+
+    <h2 class="heading">
+        About <span>Myself</span>
+    </h2>
+
+    <div class="about-box">
+
+        My name is Mahboob Zafar. I am from GUL-HARI,
+        Pakistan. I am a hardworking, creative
+        and Innocent student.
+
+        I am currently studying DIT (Diploma in
+        Information Technology) at Aspire College
+        Mailsi.
+
+        
+        I have a strong interest in computer
+        technology, web development and
+        digital education.
+
+        I enjoy learning new things, improving
+        my knowledge and developing practical
+        computer skills.
+
+    
+
+    </div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section class="education" id="education">
+
+    <h2 class="heading">
+        My <span>Education</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🎓</div>
+
+            <h3>Current Education</h3>
+
+            <p>
+                Diploma in Information Technology (DIT)
+                <br><br>
+                Aspire College Mailsi
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>Computer Learning</h3>
+
+            <p>
+                Learning computer fundamentals,
+                hardware, software and operating systems.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>Technology</h3>
+
+            <p>
+                Exploring web development,
+                internet technologies and
+                digital skills.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 <span>My Personal Portfolio</span></p>
+
+    <p>DIT Student | Aspire College Mailsi</p>
+
+    <p>Designed & Developed by Me</p>
+
+</footer>
+
+</body>
+</html>
